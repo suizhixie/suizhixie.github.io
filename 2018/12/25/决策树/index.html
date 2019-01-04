@@ -50,7 +50,7 @@
 <link rel="shortcut icon" href="/images/favicon.png">
 
 
-<title>归档集- 2019 - Crazy_Sun</title>
+<title>决策树基本概念 - Crazy_Sun</title>
 
 <meta name="keywords" content="">
 
@@ -122,8 +122,10 @@
 </div>
             <div class="page-title">
     <ul>
-        <li><a href="/" data-name="Home" title="Back Home">Home</a></li>
-        <li><a href="/tags" data-name="Tag Cloud" title="Tag Cloud">Tags</a></li>
+        <li><a href="/">最新</a></li>
+        
+        
+        
         <li class="page-search">
     <form id="search" class="search-form">
         <label for="s" class="sr-only">Input Search key Words Here</label>
@@ -165,68 +167,72 @@
 <div class="main-inner">
     <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
         <div class="post-header">
-            <h3 class="post-title">坦率的讲 - 本站目前共计5篇文章</h3>
-        </div>
-        <p>不信，你数数 ：） </p>
-        <div class="post-content markdown-body" itemprop="articleBody">
-            <div class="archives">
-                
-                
-                
-                
-                
-                <div class="archives-item">
-                    <h2>2019年01月</h2>
-                    <ul class="archives_list">
-                        
-                        <li>04日15:07:19
-                            <a href="/2019/01/04/决策树/"></a>
-                        </li>
-                        
-                
-                
-                
-                        <li>04日12:14:11
-                            <a href="/2019/01/04/基本概念/"></a>
-                        </li>
-                        
-                
-                
-                
-                        <li>03日19:52:38
-                            <a href="/2019/01/03/KNN/"></a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                
-                
-                
-                
-                
-                <div class="archives-item">
-                    <h2>2018年12月</h2>
-                    <ul class="archives_list">
-                        
-                        <li>25日16:51:56
-                            <a href="/2018/12/25/机器学习/">机器学习</a>
-                        </li>
-                        
-                
-                
-                
-                        <li>25日15:13:30
-                            <a href="/2018/12/25/字符串/">20181225151330</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                
-                
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="" target="_blank">
+                    <img width="48" src="" alt="avatar">
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="" target="_blank"></a>
+                    <span title="最后编辑于2018-12-25">2018-12-25</span>
+                </p>
+                <p></p>
+            </div>
+            <h2 class="post-title">决策树基本概念</h2>
+            <div class="post-meta">
+                本文总共690个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
+        <div class="post-content markdown-body">
+            <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><p>机器学习中分类和预测算法的评估</p>
+<ul>
+<li>准确率</li>
+<li>速度</li>
+<li>强壮性</li>
+<li>可规模性</li>
+<li>可解释性</li>
+</ul>
+<h4 id="什么是决策树"><a href="#什么是决策树" class="headerlink" title="什么是决策树"></a>什么是决策树</h4><p>决策树是一个类似流程图的树结构，其中每个内部节点表示在一个属性上的测试，每个分支代表一个属性输出而每个树叶节点代表类或类分布，最顶层是根节点。<br><img src="https://i.loli.net/2019/01/04/5c2ede62e2a1a.png" alt=""></p>
+<h4 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h4><p>信息十分抽象，如何度量<br>比特来衡量信息的多少<br><img src="https://i.loli.net/2019/01/04/5c2ee194d8974.png" alt=""></p>
+<p>信息熵每一个可发生情况的概率再乘以以2为底的对数的概率<br>变量的不确定性越大，熵也就越大</p>
+<h3 id="决策树归纳算法"><a href="#决策树归纳算法" class="headerlink" title="决策树归纳算法"></a>决策树归纳算法</h3><p>根据属性判断节点<br>信息获取量：<br>Gain(A) = Info(D)-Info_A(D)<br>通过A节点获取了多少信息<br><img src="https://i.loli.net/2019/01/04/5c2f00e24b53f.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/01/04/5c2f010e67b28.png" alt=""><br><img src="https://i.loli.net/2019/01/04/5c2f0162c7733.png" alt=""><br><img src="https://i.loli.net/2019/01/04/5c2f01b005c7c.png" alt=""><br>类似，Gain（income）=0.029，Gain（student）=0.151，Gain（credit_rating)=0.048，所以选择age作为第一个根节点</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ul>
+<li>树以代表训练样本的单个节点开始</li>
+<li>如果样本都在同一个类，则该节点成为树叶，并用该符号</li>
+<li>否则，算法使用称为信息增益的基于熵的度量作为启发信息，选择能够最好的将样本分类的属性，该属性成为该节点的测试或判断属性</li>
+<li>所有的属性都是分类的 即离散值。连续属性必须离散化</li>
+<li>对测试属性的每个已知的值，创建一个分支，并据此划分样本</li>
+<li>算法使用同样的过程，递归形成每个划分上的样本判定树。一旦一个属性出现在一个节点上，就不必在该节点的后代上考虑它</li>
+<li>递归停止</li>
+<li>（a）给定节点下样本都属于同一类</li>
+<li>（b）没有剩余属性可以进一步划分 在此情况下 使用多数表决</li>
+</ul>
+<p>避免过度拟合</p>
+<ul>
+<li>先剪枝 达到一定程度就不建了</li>
+<li>后剪枝  先建好再剪一部分<br>决策树优点：<br>直观、便于理解 小规模数据集有效<br>缺点：处理连续变量不好<br>类别较多时，错误增加的比较快<br>可规模性一般</li>
+</ul>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/机器学习/">机器学习</a>
+            
+        </div>
+        
     </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
 </div>
+<script src="/js/busuanzi.pure.mini.js"></script>
 
         </div><!-- end #main-->
     </div><!-- end #body -->
@@ -267,20 +273,5 @@
         });
     });
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
