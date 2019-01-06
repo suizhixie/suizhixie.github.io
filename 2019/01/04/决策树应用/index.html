@@ -50,7 +50,7 @@
 <link rel="shortcut icon" href="/images/favicon.png">
 
 
-<title>Crazy_Sun - </title>
+<title>决策树应用 - Crazy_Sun</title>
 
 <meta name="keywords" content="">
 
@@ -122,21 +122,9 @@
 </div>
             <div class="page-title">
     <ul>
-        <li class="active">
-            <a href="/" data-name="最近文章">最近</a>
-        </li>
+        <li><a href="/">最新</a></li>
         
-        <li class="">
-            <a href="/categories/tech-notes" data-name="技术">技术</a>
-        </li>
         
-        <li class="">
-            <a href="/categories/humanities" data-name="人文">人文</a>
-        </li>
-        
-        <li class="">
-            <a href="/categories/others" data-name="其他">其他</a>
-        </li>
         
         <li class="page-search">
     <form id="search" class="search-form">
@@ -177,282 +165,54 @@
     </ul>
 </div>
 <div class="main-inner">
-    
-    <!-- 首页默认取最最新文章集 -->
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
+    <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="" target="_blank">
+                    <img width="48" src="" alt="avatar">
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="" target="_blank"></a>
+                    <span title="最后编辑于2019-01-04">2019-01-04</span>
+                </p>
+                <p></p>
+            </div>
+            <h2 class="post-title">决策树应用</h2>
+            <div class="post-meta">
+                本文总共1215个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>scikit-learn<br>覆盖问题：分类、回归、聚类、降维、模型选择、预处理</p>
+<p><img src="https://i.loli.net/2019/01/04/5c2f4ee9280be.png" alt=""></p>
+<p>注意python2和python3兼容问题<br>python3  中csv一行行读<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">allElectronicData = open(r&apos;C://Users//Administrator//Desktop//study//hello.csv&apos;)</span><br><span class="line">reader = csv.reader(allElectronicData)</span><br><span class="line">headers = next(reader)</span><br></pre></td></tr></table></figure></p>
+<p>python2 中csv一行行读<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">allElectronicData = open(r&apos;C://Users//Administrator//Desktop//study//hello.csv&apos;)</span><br><span class="line">reader = csv.reader(allElectronicData)</span><br><span class="line">headers = reader.next()</span><br></pre></td></tr></table></figure></p>
+<p>将原始数据转化成<br><img src="https://i.loli.net/2019/01/04/5c2f6041a07e8.png" alt=""><br>读数据将特征向量存入字典数组<br>标签存入标签数组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">featureList = []  #分类</span><br><span class="line">labelList = []     #class</span><br><span class="line">#读行</span><br><span class="line">for row in reader:</span><br><span class="line">	labelList.append(row[len(row)-1]) #将每一行最后的值添加到labellist</span><br><span class="line">	rowDict =&#123;&#125;</span><br><span class="line">	for i in range(1,len(row)-1):</span><br><span class="line">		rowDict[headers[i]] = row[i]</span><br><span class="line">	featureList.append(rowDict)</span><br></pre></td></tr></table></figure></p>
+<p>转化成list（dict{}）形式 方便用DictVectorizer进行转化成0,1格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vec = DictVectorizer()</span><br><span class="line">dummyX = vec.fit_transform(featureList).toarray()</span><br></pre></td></tr></table></figure></p>
+<p>预测数据时注意纬度  取第一行数据 改值再进行预测<br>将第一行数据年龄从年轻人改为中年人<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">oneRowX = dummyX[0,:].reshape(1,-1)</span><br><span class="line"></span><br><span class="line">print(&quot;oneRowX:&quot;+ str(oneRowX))</span><br><span class="line"></span><br><span class="line">newRowX = oneRowX</span><br><span class="line">newRowX[0][0] = 1</span><br><span class="line">newRowX[0][2] = 0</span><br><span class="line">print(&quot;newRowX:&quot;+str(newRowX))</span><br><span class="line">newRowX.reshape(-1,1)</span><br><span class="line">print(&quot;newRowX:&quot;+str(newRowX))</span><br><span class="line">predictedY =  clf.predict(newRowX)</span><br><span class="line">print(&quot;predictedY:&quot;+str(predictedY))</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><img src="https://i.loli.net/2019/01/04/5c2f716b2c61c.png" alt=""></p>
+<p>转化dot文件至pdf可视化决策树：<br>dot -Tpdf inis.dot -o output.pdf</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
             </a>
-            <em>·</em>2019-01-05
         </div>
-        <a class="post-title" href="/2019/01/05/支持向量机/" target="_blank" title="支持向量机">支持向量机</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+        
+        <div class="post-tags">Tags：
             
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
+            <a href="/tags/机器学习/">机器学习</a>
             
         </div>
-    </div>
-    <div class="post-desc">
-        支持向量机
-    </div>
-</article>
-
-
-
+        
+    </article>
     
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2019-01-05
-        </div>
-        <a class="post-title" href="/2019/01/05/20190105211908/" target="_blank" title="20190105211908">20190105211908</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        20190105211908
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2019-01-05
-        </div>
-        <a class="post-title" href="/2019/01/05/20190105211846/" target="_blank" title="20190105211846">20190105211846</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        20190105211846
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2019-01-05
-        </div>
-        <a class="post-title" href="/2019/01/05/KNN应用/" target="_blank" title="KNN应用">KNN应用</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        KNN应用
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2019-01-05
-        </div>
-        <a class="post-title" href="/2019/01/05/KNN理论/" target="_blank" title="KNN理论">KNN理论</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        KNN理论
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2019-01-04
-        </div>
-        <a class="post-title" href="/2019/01/04/决策树应用/" target="_blank" title="决策树应用">决策树应用</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        决策树应用
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2018-12-25
-        </div>
-        <a class="post-title" href="/2018/12/25/机器学习/" target="_blank" title="机器学习">机器学习</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        机器学习
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2018-12-25
-        </div>
-        <a class="post-title" href="/2018/12/25/KNN/" target="_blank" title="k-临近算法">k-临近算法</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        k-临近算法
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2018-12-25
-        </div>
-        <a class="post-title" href="/2018/12/25/字符串/" target="_blank" title="字符串">字符串</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/Basic-python/" target="_blank">python</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        字符串
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2018-12-25
-        </div>
-        <a class="post-title" href="/2018/12/25/决策树/" target="_blank" title="决策树基本概念">决策树基本概念</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        决策树基本概念
-    </div>
-</article>
-
-
-
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
     
     
 </div>
-<!-- 分页开始 -->
-
-<div id="btn-pager">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
-</div>
-
+<script src="/js/busuanzi.pure.mini.js"></script>
 
         </div><!-- end #main-->
     </div><!-- end #body -->

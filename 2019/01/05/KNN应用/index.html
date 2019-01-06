@@ -50,7 +50,7 @@
 <link rel="shortcut icon" href="/images/favicon.png">
 
 
-<title>机器学习基本概念 - Crazy_Sun</title>
+<title>knn应用 - Crazy_Sun</title>
 
 <meta name="keywords" content="">
 
@@ -173,25 +173,26 @@
                 </a>
                 <p><span class="label">作者</span>
                     <a href="" target="_blank"></a>
-                    <span title="最后编辑于2018-12-25">2018-12-25</span>
+                    <span title="最后编辑于2019-01-05">2019-01-05</span>
                 </p>
                 <p></p>
             </div>
-            <h2 class="post-title">机器学习基本概念</h2>
+            <h2 class="post-title">KNN应用</h2>
             <div class="post-meta">
-                本文总共299个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+                本文总共2545个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            <p>训练集：用来进行训练，也就是产生模型或者算法的数据集<br>测试集：用来专门进行测试已经学习好的模型或者算法的数据集<br>特征向量：属性的集合，通常用一个向量表示 附属于一个实列   比如天气、温度、风力、湿度、水温这些<br>标记：实例类别的标记 目标  比如享受运动<br><img src="https://i.loli.net/2019/01/04/5c2eda945a5a1.png" alt=""></p>
-<p>分类：目标标记为类别型数据<br>回归：目标标记为连续性问题<br><img src="https://i.loli.net/2019/01/04/5c2edadf6bb0b.png" alt=""></p>
-<p>列子：研究肿瘤良性，恶性与尺寸、颜色的关系<br>特征值：肿瘤尺寸、颜色<br>标记：良性、恶性</p>
-<p>有监督学习：训练集有类别标记<br>无监督学习：无类别标记的训练集<br>半监督学习：有类别标记训练集+无标记训练集</p>
-<h3 id="机器学习步骤框架"><a href="#机器学习步骤框架" class="headerlink" title="机器学习步骤框架"></a>机器学习步骤框架</h3><ul>
-<li>把数据拆分为训练集和测试集</li>
-<li>用训练集的特征向量来训练算法</li>
-<li>学习来的算法用测试集来评估算法</li>
-</ul>
+            <h4 id="数据集介绍"><a href="#数据集介绍" class="headerlink" title="数据集介绍"></a>数据集介绍</h4><p> 虹膜<br> <img src="https://i.loli.net/2019/01/05/5c2fff61ee511.png" alt=""></p>
+<p> 150个实例</p>
+<p> 萼片长度，萼片宽度，花瓣长度，花瓣宽度<br> 类别：<br> lris setosa,lris versicolor,lris virginica</p>
+<p> 数据集连接<a href="https://pan.baidu.com/s/15xQRMDAITBlyMGx8mmg0wg" target="_blank" rel="noopener">https://pan.baidu.com/s/15xQRMDAITBlyMGx8mmg0wg</a></p>
+<p> 导入数据集<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def loadDataset(filename,split,trainingSet = [],testSet = []):</span><br><span class="line">	with open(filename,&apos;rt&apos;) as csvfile:</span><br><span class="line">		lines = csv.reader(csvfile) #读取行</span><br><span class="line">		dataset = list(lines)   #转化成list</span><br><span class="line">		for x in range(len(dataset)-1):</span><br><span class="line">			for y in range(4):</span><br><span class="line">				dataset[x][y] = float(dataset[x][y])</span><br><span class="line">			if random.random() &lt; split:</span><br><span class="line">				trainingSet.append(dataset[x])</span><br><span class="line">			else:</span><br><span class="line">				testSet.append(dataset[x])</span><br></pre></td></tr></table></figure></p>
+<p> 求测试集和训练集中点的距离 并排序取前K个<br> getNeighbors遍历训练集  enclideanDistance取一个测试集数据获取维数 并计算距离<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> #求距离 传入实例和维度</span><br><span class="line">def euclideanDistance(instance1,instance2,length):</span><br><span class="line">	distance = 0</span><br><span class="line">	for x in range(length):</span><br><span class="line">		distance += pow((instance1[x] - instance2[x]),2)</span><br><span class="line">	return math.sqrt(distance)</span><br><span class="line"></span><br><span class="line">def getNeighbors(trainingSet, testInstance,k):</span><br><span class="line">	distances = []</span><br><span class="line">	length = len(testInstance)-1      #将最后一列的训练集的标记剔除</span><br><span class="line">	for x in range(len(trainingSet)):   #遍历训练集每一个数</span><br><span class="line">		dist = euclideanDistance(testInstance,trainingSet[x],length)</span><br><span class="line">		#对训练集每一个数计算到测试集的距离</span><br><span class="line">		distances.append((trainingSet[x],dist))</span><br><span class="line">	distances.sort(key = operator.itemgetter(1))</span><br><span class="line">	#排序</span><br><span class="line">	neighbors = []</span><br><span class="line">	for x in range(k):</span><br><span class="line">		neighbors.append(distances[x][0])   #取前K个距离</span><br><span class="line">	return neighbors</span><br></pre></td></tr></table></figure></p>
+<p> 统计投票个数 根据前K个的多数标签来决定预测的标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 统计投票个数</span><br><span class="line">def getResponse(neighbors):</span><br><span class="line">	classVotes = &#123;&#125;</span><br><span class="line">	for x in range(len(neighbors)):</span><br><span class="line">		response = neighbors[x][-1]</span><br><span class="line">		if response in classVotes:</span><br><span class="line">			classVotes[response] += 1</span><br><span class="line">		else:</span><br><span class="line">			classVotes[response] = 1</span><br><span class="line">	sortedVotes = sorted(classVotes.items(),key = operator.itemgetter(1),reverse = True)</span><br><span class="line">	return sortedVotes[0][0]   #返回投票得到最多的类别</span><br></pre></td></tr></table></figure></p>
+<p>计算模型的精确度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def getAccuracy(testSet, predictions):</span><br><span class="line">	correct = 0</span><br><span class="line">	for x in range(len(testSet)):</span><br><span class="line">		if testSet[x][-1] == predictions[x]:</span><br><span class="line">			correct += 1</span><br><span class="line">	return (correct/float(len(testSet))) * 100.0</span><br></pre></td></tr></table></figure></p>
+<p>调用函数 展示结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">	#准备数据</span><br><span class="line">	trainingSet = []</span><br><span class="line">	testSet = []</span><br><span class="line">	split = 0.67</span><br><span class="line">	loadDataset(r&apos;C://Users//Administrator//Desktop//study//iris.data.txt&apos;,split,trainingSet,testSet)</span><br><span class="line">	#划分三分之二的数据为训练集 划分三分之一的数据为测试集</span><br><span class="line">	print (&apos;train set:&apos;+ repr(len(trainingSet)))</span><br><span class="line">	print (&apos;testSet:&apos; + repr(len(testSet)))</span><br><span class="line"></span><br><span class="line">	predictions = []</span><br><span class="line">	k = 3</span><br><span class="line">	for x in range(len(testSet)):</span><br><span class="line">		neighbors = getNeighbors(trainingSet,testSet[x],k)	</span><br><span class="line">		result = getResponse(neighbors)</span><br><span class="line">		predictions.append(result)</span><br><span class="line">		print(&quot;&gt; predicted =&quot;+ repr(result)+&apos;,actual = &apos;+repr(testSet[x][-1]))</span><br><span class="line">	accuracy = getAccuracy(testSet,predictions)</span><br><span class="line">	print(&quot;accuracy:&quot;+repr(accuracy)+&apos;%&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>repr返回一个对象的string格式</p>
 
         </div>
         <div class="post-tool">

@@ -50,7 +50,7 @@
 <link rel="shortcut icon" href="/images/favicon.png">
 
 
-<title>Crazy_Sun - </title>
+<title>knn理论 - Crazy_Sun</title>
 
 <meta name="keywords" content="">
 
@@ -122,21 +122,9 @@
 </div>
             <div class="page-title">
     <ul>
-        <li class="active">
-            <a href="/" data-name="最近文章">最近</a>
-        </li>
+        <li><a href="/">最新</a></li>
         
-        <li class="">
-            <a href="/categories/tech-notes" data-name="技术">技术</a>
-        </li>
         
-        <li class="">
-            <a href="/categories/humanities" data-name="人文">人文</a>
-        </li>
-        
-        <li class="">
-            <a href="/categories/others" data-name="其他">其他</a>
-        </li>
         
         <li class="page-search">
     <form id="search" class="search-form">
@@ -177,282 +165,61 @@
     </ul>
 </div>
 <div class="main-inner">
-    
-    <!-- 首页默认取最最新文章集 -->
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
+    <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="" target="_blank">
+                    <img width="48" src="" alt="avatar">
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="" target="_blank"></a>
+                    <span title="最后编辑于2019-01-05">2019-01-05</span>
+                </p>
+                <p></p>
+            </div>
+            <h2 class="post-title">KNN理论</h2>
+            <div class="post-meta">
+                本文总共460个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h1 id="KNN算法"><a href="#KNN算法" class="headerlink" title="KNN算法"></a>KNN算法</h1><p>分类算法<br>基于实例的学习 懒惰学习<br>根据邻近的类别来归类</p>
+<h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><p>为了判断未知实例的类别，以所有已知的类别实例作为参照<br>选择参数K  即K个已知实例  通常K取大增强健壮性 一般选奇数<br>计算未知实例与所有已知实例的距离<br>选择最近K个已知实例<br>根据少数服从多数的投票法则，让未知实例归类为K个最邻近样本数中最多数的类别<br><img src="https://i.loli.net/2019/01/05/5c2ff97eacafa.png" alt=""></p>
+<p>距离的衡量方法<br><img src="https://i.loli.net/2019/01/05/5c2ff7b31ce31.png" alt=""><br>其他距离衡量：余弦值，相关度，曼哈顿距离（看它需要走过多少个街区，不是直线距离）</p>
+<p>求距离<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import math</span><br><span class="line">def ComputerEuclideanDistance(x1,y1,x2,y2):</span><br><span class="line">	d = math.sqrt(math.pow((x1-x2),2) + math.pow((y1-y2),2))</span><br><span class="line">	return d</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.loli.net/2019/01/05/5c2ffa4fb4cad.png" alt=""></p>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ul>
+<li>简单</li>
+<li>容易理解</li>
+<li>容易实现</li>
+<li>K取大增强健壮性</li>
+</ul>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ul>
+<li>需要大量空间存储所有已知的实例</li>
+<li>算法复杂度高</li>
+<li>当样本分布极不均衡时，其中一类样本过大 （实例数量过多占主导群体 但这个新的实例并未接近目标样本<br><img src="https://i.loli.net/2019/01/05/5c2ffb506df07.png" alt=""><h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3>考虑距离 ，根据距离加上权重 比如：1/d</li>
+</ul>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
             </a>
-            <em>·</em>2019-01-05
         </div>
-        <a class="post-title" href="/2019/01/05/支持向量机/" target="_blank" title="支持向量机">支持向量机</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+        
+        <div class="post-tags">Tags：
             
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
+            <a href="/tags/机器学习/">机器学习</a>
             
         </div>
-    </div>
-    <div class="post-desc">
-        支持向量机
-    </div>
-</article>
-
-
-
+        
+    </article>
     
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2019-01-05
-        </div>
-        <a class="post-title" href="/2019/01/05/20190105211908/" target="_blank" title="20190105211908">20190105211908</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        20190105211908
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2019-01-05
-        </div>
-        <a class="post-title" href="/2019/01/05/20190105211846/" target="_blank" title="20190105211846">20190105211846</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        20190105211846
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2019-01-05
-        </div>
-        <a class="post-title" href="/2019/01/05/KNN应用/" target="_blank" title="KNN应用">KNN应用</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        KNN应用
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2019-01-05
-        </div>
-        <a class="post-title" href="/2019/01/05/KNN理论/" target="_blank" title="KNN理论">KNN理论</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        KNN理论
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2019-01-04
-        </div>
-        <a class="post-title" href="/2019/01/04/决策树应用/" target="_blank" title="决策树应用">决策树应用</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        决策树应用
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2018-12-25
-        </div>
-        <a class="post-title" href="/2018/12/25/机器学习/" target="_blank" title="机器学习">机器学习</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        机器学习
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2018-12-25
-        </div>
-        <a class="post-title" href="/2018/12/25/KNN/" target="_blank" title="k-临近算法">k-临近算法</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        k-临近算法
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2018-12-25
-        </div>
-        <a class="post-title" href="/2018/12/25/字符串/" target="_blank" title="字符串">字符串</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/Basic-python/" target="_blank">python</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        字符串
-    </div>
-</article>
-
-
-
-    
-    
-<article class="post">
-    
-    <div class="post-header">
-        <div class="post-meta">
-            <a href="" target="_blank">
-                <strong></strong>
-            </a>
-            <em>·</em>2018-12-25
-        </div>
-        <a class="post-title" href="/2018/12/25/决策树/" target="_blank" title="决策树基本概念">决策树基本概念</a>
-        <div class="post-meta">
-            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
-            
-                <em>·</em>
-                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
-            
-        </div>
-    </div>
-    <div class="post-desc">
-        决策树基本概念
-    </div>
-</article>
-
-
-
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
     
     
 </div>
-<!-- 分页开始 -->
-
-<div id="btn-pager">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
-</div>
-
+<script src="/js/busuanzi.pure.mini.js"></script>
 
         </div><!-- end #main-->
     </div><!-- end #body -->
