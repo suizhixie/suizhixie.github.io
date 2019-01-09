@@ -50,7 +50,7 @@
 <link rel="shortcut icon" href="/images/favicon.png">
 
 
-<title>20190105211846 - Crazy_Sun</title>
+<title>神经网络应用 - Crazy_Sun</title>
 
 <meta name="keywords" content="">
 
@@ -173,17 +173,23 @@
                 </a>
                 <p><span class="label">作者</span>
                     <a href="" target="_blank"></a>
-                    <span title="最后编辑于2019-01-05">2019-01-05</span>
+                    <span title="最后编辑于2019-01-09">2019-01-09</span>
                 </p>
                 <p></p>
             </div>
-            <h2 class="post-title">20190105211846</h2>
+            <h2 class="post-title">神经网络应用</h2>
             <div class="post-meta">
-                本文总共0个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+                本文总共2220个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
             </div>
         </div>
         <div class="post-content markdown-body">
-            
+            <p>1、关于非线性转化的方程<br>sigmoid函数（s曲线）作为非线性转化的方程</p>
+<ul>
+<li>双曲函数</li>
+<li>逻辑函数<br><img src="https://i.loli.net/2019/01/09/5c35f9b60eb13.png" alt=""><br>广义的sigmoid函数只要在0-1之间 S型就可以<br>tanh（0）即是sigmoid函数<br><img src="https://i.loli.net/2019/01/09/5c35fa582fa66.png" alt=""><br><img src="https://i.loli.net/2019/01/09/5c35fb0248312.png" alt=""><br>逻辑函数求导<br><img src="https://i.loli.net/2019/01/09/5c35fb37adfba.png" alt=""><h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">def tanh(x):</span><br><span class="line">	return np.tanh(x)</span><br><span class="line">#求导数</span><br><span class="line">def tanh_deriv(x):</span><br><span class="line">	return 1.0 - np.tanh(x)*np.tanh(x)</span><br><span class="line"></span><br><span class="line">def logistic(x):</span><br><span class="line">	return 1/(1 + np.exp(-x))</span><br><span class="line"></span><br><span class="line">#求导数</span><br><span class="line">def logistic_derivative(x):</span><br><span class="line">	return logistic(x)*(1 - logistic(x))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#面向对象的编程思想</span><br><span class="line">class NeuralNetwork:</span><br><span class="line">	def __init__(self, layers, activation = &apos;tanh&apos;): # 构造函数  self引本身 layers 神经网络层数（包含输出层） activation 选取模型</span><br><span class="line">		if activation == &apos;logistic&apos;:</span><br><span class="line">			self.activation = logistic</span><br><span class="line">			self.activation_deriv = logistic_derivative</span><br><span class="line">		elif activation == &apos;tanh&apos;:</span><br><span class="line">			self.activation = tanh</span><br><span class="line">			self.activation_deriv = tanh_deriv</span><br><span class="line">		</span><br><span class="line">		self.weights = []</span><br><span class="line">		#第二层开始更新权重</span><br><span class="line">		for i in range(1 , len(layers) - 1):</span><br><span class="line">			self.weights.append((2*np.random.random((layers[i - 1]+ 1,layers[i] + 1))-1)*0.25)</span><br><span class="line">			#i-1层到第i层赋值</span><br><span class="line">			self.weights.append((2*np.random.random((layers[i] + 1,layers[i + 1]))-1)*0.25)</span><br><span class="line">			#i层到第i+1层赋值</span><br><span class="line">			# x 数据集 y标签  epochs 循环次数 10000次 每次更新神经网络采用抽样的方法</span><br><span class="line">	def fit(self, X,y,learning_rate = 0.2, epochs = 10000):</span><br><span class="line">		X = np.atleast_2d(X)#确定是二维数组</span><br><span class="line">		#            全是1的矩阵   x矩阵行数      列数+1</span><br><span class="line">		temp = np.ones([X.shape[0],X.shape[1]+1])</span><br><span class="line">		temp[:, 0:-1] = X</span><br><span class="line">		# 取所有行  第一列到除了最后一列 偏向的赋值</span><br><span class="line">		X = temp</span><br><span class="line">		y = np.array(y)</span><br><span class="line">		#正向更新</span><br><span class="line">		for k in range(epochs):</span><br><span class="line">			i = np.random.randint(X.shape[0])</span><br><span class="line">			#随机抽取行</span><br><span class="line">			a = [X[i]] # 随机抽取的实例</span><br><span class="line"></span><br><span class="line">			for l in range(len(self.weights)):</span><br><span class="line">				# 非线性转化                 内积</span><br><span class="line">				a.append(self.activation(np.dot(a[l],self.weights[l])))</span><br><span class="line">			error = y[i] - a[-1] #顶层误差</span><br><span class="line">			deltas = [error * self.activation_deriv(a[-1])]</span><br><span class="line">			# 开始 backprobagation 最后一层减2 deltas 反向走</span><br><span class="line">			for l in range(len(a) - 2,0, -1):</span><br><span class="line">				#更新隐藏层error</span><br><span class="line">				deltas.append(deltas[-1].dot(self.weights[l].T)*self.activation_deriv(a[l]))</span><br><span class="line">			deltas.reverse()</span><br><span class="line">			#权重更新</span><br><span class="line">			for i in range(len(self.weights)):</span><br><span class="line">				layer = np.atleast_2d(a[i])</span><br><span class="line">				delta = np.atleast_2d(deltas[i])</span><br><span class="line">				self.weights[i] += learning_rate * layer.T.dot(delta)</span><br><span class="line">	def predit(self, x):</span><br><span class="line">		x = np.array(x)</span><br><span class="line">		temp = np.ones(x.shape[0]+1)</span><br><span class="line">		temp[0:1] = x</span><br><span class="line">		a = temp</span><br><span class="line">		for l in range(0, len(self.weights)):</span><br><span class="line">			a = self.activation(np.dot(a, self.weights[l]))</span><br><span class="line">		return a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
         </div>
         <div class="post-tool">
             <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
@@ -192,6 +198,8 @@
         </div>
         
         <div class="post-tags">Tags：
+            
+            <a href="/tags/机器学习/">机器学习</a>
             
         </div>
         

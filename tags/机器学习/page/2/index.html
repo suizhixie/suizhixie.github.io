@@ -50,7 +50,7 @@
 <link rel="shortcut icon" href="/images/favicon.png">
 
 
-<title>支持向量机 - Crazy_Sun</title>
+<title>标签 - 机器学习 - Crazy_Sun</title>
 
 <meta name="keywords" content="">
 
@@ -122,9 +122,21 @@
 </div>
             <div class="page-title">
     <ul>
-        <li><a href="/">最新</a></li>
+        <li class="">
+            <a href="/" data-name="最近文章">最近</a>
+        </li>
         
+        <li class="">
+            <a href="/categories/tech-notes" data-name="技术">技术</a>
+        </li>
         
+        <li class="">
+            <a href="/categories/humanities" data-name="人文">人文</a>
+        </li>
+        
+        <li class="">
+            <a href="/categories/others" data-name="其他">其他</a>
+        </li>
         
         <li class="page-search">
     <form id="search" class="search-form">
@@ -165,62 +177,70 @@
     </ul>
 </div>
 <div class="main-inner">
-    <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
-        <div class="post-header">
-            <div class="post-author clearfix">
-                <a class="avatar fleft" href="" target="_blank">
-                    <img width="48" src="" alt="avatar">
-                </a>
-                <p><span class="label">作者</span>
-                    <a href="" target="_blank"></a>
-                    <span title="最后编辑于2019-01-05">2019-01-05</span>
-                </p>
-                <p></p>
-            </div>
-            <h2 class="post-title">支持向量机</h2>
-            <div class="post-meta">
-                本文总共914个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
-            </div>
-        </div>
-        <div class="post-content markdown-body">
-            <p>2012年（深度学习）以前，SVM被认为是最成功的 表现最好的算法</p>
-<p>二维空间用线区分点  建立一条最好的线来区分<br><img src="https://i.loli.net/2019/01/05/5c30b227dbae2.png" alt=""><br>SVM寻找区分两类的超平面，使边际最大<br><img src="/支持向量机/20190105094006004.png" alt=""><br>如何选取边际最大化的超平面<br>超平面到一侧最近的点的距离等于到另一侧最近点的距离，两侧的两个超平面平行</p>
-<h3 id="线性可区分-线性不可区分"><a href="#线性可区分-线性不可区分" class="headerlink" title="线性可区分 线性不可区分"></a>线性可区分 线性不可区分</h3><p><img src="/支持向量机/20190105094728798.png" alt=""><br><img src="/支持向量机/20190105094846321.png" alt=""><br><img src="/支持向量机/20190105094922296.png" alt=""><br>b偏好  w特征值个数</p>
-<h5 id="假设2维特征向量"><a href="#假设2维特征向量" class="headerlink" title="假设2维特征向量"></a>假设2维特征向量</h5><p>X = （x1,x2)<br>把b想象成额外的weight<br>超平面方程变成： w0 + w1x1 + w2x2 = 0<br><img src="/支持向量机/20190105095337843.png" alt=""><br>所有超平面右上方的点都满足：w0 + w1x1 + w2x2 &gt; 0<br>所有超平面左下方的点都满足：w0 + w1x1 + w2x2 &lt; 0<br>调整weight，使超平面定义边际两边：<br><img src="/支持向量机/20190105100103916.png" alt=""><br>两侧标签一致  即y一侧全是1，一侧全是-1<br>综合以上两式<br><img src="/支持向量机/20190105100253032.png" alt=""><br>所有坐落在边际两边的超平面上都被称作支持向量<br>分界的超平面和两侧临界点所在的超平面任意一个的距离为<br><img src="/支持向量机/20190105100621397.png" alt=""><br><img src="/支持向量机/20190105100630266.png" alt=""><br><img src="/支持向量机/20190105100654938.png" alt=""><br><img src="/支持向量机/20190105100705094.png" alt=""></p>
-<h2 id="SVM如何找出最大边际超平面"><a href="#SVM如何找出最大边际超平面" class="headerlink" title="SVM如何找出最大边际超平面"></a>SVM如何找出最大边际超平面</h2><p><img src="/支持向量机/20190105100921381.png" alt=""><br>利用上图公式可变为有限制的凸优化问题<br>利用KKT条件和拉格朗日公式  可以推出最大边界超平面 也叫“决定边界”<br><img src="/支持向量机/20190105101153376.png" alt=""><br>其中，yi是支持向量点Xi的类别标记，XT是要测试的实例<br>ai和bo都是单一数值型参数，拉格朗日中的 l是支持向量点的个数</p>
-<p>对于任何要测试的实例，带入以上公式，得出的符号是正还是负决定某一侧<br>计算过程<br><img src="/支持向量机/20190105102145838.png" alt=""></p>
-<h6 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h6><ul>
-<li>训练好的模型的算法复杂度是由支持向量的个数决定，而不是由数据的维度决定，所以支持向量机不太容易产生过度拟合</li>
-<li>支持向量机训练出来的模型完全依赖与支持向量，即使训练集中所有非支持向量的点都被去除，重复训练过程，结果仍然得到一样的模型</li>
-<li>一个支持向量机模型如果训练的出的支持向量个数比较小，支持向量机训练出的模型比较容易被泛化</li>
-</ul>
-<h1 id="线性不可分"><a href="#线性不可分" class="headerlink" title="线性不可分"></a>线性不可分</h1><p><img src="https://i.loli.net/2019/01/08/5c34358814e10.png" alt=""><br><img src="/支持向量机/20190108013612020.png" alt=""></p>
-<h2 id="解决线性不可分"><a href="#解决线性不可分" class="headerlink" title="解决线性不可分"></a>解决线性不可分</h2><p>1、 利用一个非线性的映射把原数据集中的向量点转化到一个更高维度的空间中<br>2、 在这个高维度的空间中找到一个线性超平面来根据线性可分的情况处理</p>
-<h3 id="如何利用非线性映射把原始数据转化到高维空间中"><a href="#如何利用非线性映射把原始数据转化到高维空间中" class="headerlink" title="如何利用非线性映射把原始数据转化到高维空间中"></a>如何利用非线性映射把原始数据转化到高维空间中</h3><p><img src="/支持向量机/20190108014440928.png" alt=""><br><img src="/支持向量机/20190108014517746.png" alt=""></p>
-<h5 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h5><p>1、如何选择合理的非线性转化把数据转到高纬度<br>2、如何解决计算内积时算法复杂度非常高的问题</p>
-<h2 id="使用核方法"><a href="#使用核方法" class="headerlink" title="使用核方法"></a>使用核方法</h2><p><img src="/支持向量机/20190108014932886.png" alt=""><br><img src="/支持向量机/20190108015252978.png" alt=""></p>
-<h2 id="SVM扩展可解决多个类别分类问题"><a href="#SVM扩展可解决多个类别分类问题" class="headerlink" title="SVM扩展可解决多个类别分类问题"></a>SVM扩展可解决多个类别分类问题</h2><p>对于每个类，有一个当前类和其他类的二类分类器</p>
-
-        </div>
-        <div class="post-tool">
-            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
-                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+    
+    
+    
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
             </a>
+            <em>·</em>2018-12-25
         </div>
-        
-        <div class="post-tags">Tags：
+        <a class="post-title" href="/2018/12/25/KNN/" target="_blank" title="k-临近算法">k-临近算法</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
             
-            <a href="/tags/机器学习/">机器学习</a>
+                <em>·</em>
+                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
             
         </div>
-        
-    </article>
+    </div>
+    <div class="post-desc">
+        k-临近算法
+    </div>
+</article>
+
+
+
     
-    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
     
+<article class="post">
+    
+    <div class="post-header">
+        <div class="post-meta">
+            <a href="" target="_blank">
+                <strong></strong>
+            </a>
+            <em>·</em>2018-12-25
+        </div>
+        <a class="post-title" href="/2018/12/25/基本概念/" target="_blank" title="机器学习基本概念">机器学习基本概念</a>
+        <div class="post-meta">
+            <a href="/tags" target="_blank"><i class="fa fa-tags"></i></a>
+            
+                <em>·</em>
+                <a href="http://yoursite.com/tags/机器学习/" target="_blank">机器学习</a>
+            
+        </div>
+    </div>
+    <div class="post-desc">
+        机器学习基本概念
+    </div>
+</article>
+
+
+
     
 </div>
-<script src="/js/busuanzi.pure.mini.js"></script>
+<!-- 分页开始 -->
+
+<div id="btn-pager">
+    
+    <a class="extend prev" rel="prev" href="/tags/机器学习/">Prev</a><a class="page-number" href="/tags/机器学习/">1</a><span class="page-number current">2</span>
+</div>
+
 
         </div><!-- end #main-->
     </div><!-- end #body -->
