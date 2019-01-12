@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://yoursite.com/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://yoursite.com">
+<meta name="author" content="Sun">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>sas双变量分析 - Crazy_Sun</title>
+
+<meta name="keywords" content="">
+
+<meta name="description " content="">
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="CS">CS</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">碎纸屑</h1>
+        <h3 class="cover-siteTitle">浮生若梦</h3>
+        <p class="cover-siteDesc">成长、学习</p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-telegram">
+                <a href="http://t.me/kunyintang" target="_blank" title="telegram" ref="friend">
+                    <i class="fa fa-telegram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-instagram">
+                <a href="https://www.instagram.com/mtangsir/" target="_blank" title="instagram" ref="friend">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-twitter">
+                <a href="https://twitter.com/tangkunyin" target="_blank" title="twitter" ref="friend">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/tangkunyin" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+        
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">Input Search key Words Here</label>
+        <input class="search-field" type="text" name="s" placeholder="Input Search key Words Here">
+        <button type="submit" class="search-form-submit" title="Search"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="" target="_blank">
+                    <img width="48" src="" alt="avatar">
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="" target="_blank"></a>
+                    <span title="最后编辑于2019-01-12">2019-01-12</span>
+                </p>
+                <p></p>
+            </div>
+            <h2 class="post-title">SAS双变量分析</h2>
+            <div class="post-meta">
+                本文总共1674个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h3 id="中心极限定理"><a href="#中心极限定理" class="headerlink" title="中心极限定理"></a>中心极限定理</h3><p><img src="https://i.loli.net/2019/01/13/5c3ac28631329.png" alt=""><br>不管原来分布是什么样 样本足够大 总体均值近似服从正态分布</p>
+<p><img src="https://i.loli.net/2019/01/13/5c3ac2d383009.png" alt=""><br><img src="https://i.loli.net/2019/01/13/5c3ac3631e046.png" alt=""><br><img src="https://i.loli.net/2019/01/13/5c3ac3fbac941.png" alt=""><br>总体均值置信区间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proc means data = double.b_rise n mean stderr clm;</span><br><span class="line">var weight;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.loli.net/2019/01/13/5c3ad2e4e8406.png" alt=""></p>
+<h3 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h3><p><img src="https://i.loli.net/2019/01/13/5c3b003c2e2ae.png" alt=""><br><img src="https://i.loli.net/2019/01/13/5c3b01069d4b5.png" alt=""><br>P-Value： 拒绝零假设所所犯的第一类错误<br>就是当原假设为真时所得到的样本观察结果或更极端结果出现的概率。如果P值很小，说明原假设情况的发生的概率很小，而如果出现了，根据<a href="https://baike.baidu.com/item/%E5%B0%8F%E6%A6%82%E7%8E%87%E5%8E%9F%E7%90%86/10876969" target="_blank" rel="noopener">小概率原理</a>，我们就有理由拒绝原假设，P值越小，我们拒绝原假设的理由越充分。总之，P值越小，表明结果越显著。</p>
+<h3 id="相关分析"><a href="#相关分析" class="headerlink" title="相关分析"></a>相关分析</h3><p><img src="https://i.loli.net/2019/01/13/5c3b04117b7cc.png" alt=""><br>研究两个变量间的关系</p>
+<h3 id="proc-corr"><a href="#proc-corr" class="headerlink" title="proc corr"></a>proc corr</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">proc corr data=double.fitness pearson spearman;</span><br><span class="line">var weight oxygen runtime;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure>
+<p>pearson:Pearson相关系数 [1]<a href=""> </a> （Pearson CorrelationCoefficient）是用来衡量两个数据集合是否在一条线上面，它用来衡量<a href="https://baike.baidu.com/item/%E5%AE%9A%E8%B7%9D%E5%8F%98%E9%87%8F/2710255" target="_blank" rel="noopener">定距变量</a>间的<a href="https://baike.baidu.com/item/%E7%BA%BF%E6%80%A7%E5%85%B3%E7%B3%BB/1653156" target="_blank" rel="noopener">线性关系</a>。</p>
+<p><img src="https://i.loli.net/2019/01/13/5c3b063f72abf.png" alt=""><br>spearman:即spearman相关系数。经常用希腊字母ρ表示。 它是衡量两个变量的依赖性的 非参数 指标。 它利用单调方程评价两个统计变量的相关性。 如果数据中没有重复值， 并且当两个变量完全单调相关时，斯皮尔曼相关系数则为+1或−1。有序性变量间相关关系<br><img src="https://i.loli.net/2019/01/13/5c3b059ae0fe5.png" alt=""><br><img src="https://i.loli.net/2019/01/13/5c3b05b19f6e2.png" alt=""><br>第一个值两个变量间的相关系数<br>第二个值假设两个不相关情况下的p-value  p-value足够小表明相关<br>第三个值对应观测数</p>
+<h2 id="两个离散变量的关系：列联表分析"><a href="#两个离散变量的关系：列联表分析" class="headerlink" title="两个离散变量的关系：列联表分析"></a>两个离散变量的关系：列联表分析</h2><p><img src="https://i.loli.net/2019/01/13/5c3b0886312cb.png" alt=""><br><img src="https://i.loli.net/2019/01/13/5c3b090ddad96.png" alt=""><br>chisp 卡方检验<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">proc format;</span><br><span class="line">value purfmt 1 =&quot;$100+&quot;</span><br><span class="line">			 0 = &quot;&lt;$100&quot;;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc freq data=double.b_sales_inc;</span><br><span class="line">tables gender*purchase</span><br><span class="line">           /chisq expected cellchi2 nocol nopercent;</span><br><span class="line">format purchase purfmt.;</span><br><span class="line">run;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.loli.net/2019/01/13/5c3b0ce439f31.png" alt=""><br>期望值基于gender和purchase没有关系的假设 p值越小拒绝原假设</p>
+<p>收入和购买力间是否有关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">data double.b_sales_inc;</span><br><span class="line">   set double.b_sales;</span><br><span class="line">   inclevel = 1*(income=&apos;Low&apos;) + 2*(income=&apos;Medium&apos;)</span><br><span class="line">                + 3*(income=&apos;High&apos;);</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc format;</span><br><span class="line">   value purfmt 1 = &quot;$100 +&quot;</span><br><span class="line">                0 = &quot;&lt; $100&quot;</span><br><span class="line">                  ;</span><br><span class="line">run;</span><br><span class="line">proc format;</span><br><span class="line">   value incfmt 1=&apos;Low Income&apos;</span><br><span class="line">                2=&apos;Medium Income&apos;</span><br><span class="line">                3=&apos;High Income&apos;;</span><br><span class="line">run;</span><br><span class="line"></span><br><span class="line">proc freq data=double.b_sales_inc;</span><br><span class="line">  tables inclevel*purchase / chisq trend measures cl;</span><br><span class="line">  format inclevel incfmt. purchase purfmt.;</span><br><span class="line">  title1 &apos;Ordinal Association between INCLEVEL and PURCHASE?&apos;;</span><br><span class="line"> run;</span><br></pre></td></tr></table></figure></p>
+<p>有序的有没有关系 看Mantel-Haenszel卡方 通过概率也就是p-value判断<br>无序的看卡方和似然比卡方</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/SAS/">SAS</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about" title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="help">急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/app" title="App下载">App下载</a>
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br>
+            ©2018 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">碎纸屑</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+
+    </div>
+</footer>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
