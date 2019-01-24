@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=http://yoursite.com/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://yoursite.com">
+<meta name="author" content="Sun">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>python函数 - Crazy_Sun</title>
+
+<meta name="keywords" content="">
+
+<meta name="description " content="">
+
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="CS">CS</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>Home</span></a>
+        <a href="/archives" title="Archives"><i class="fa fa-archives"></i><span>Archives</span></a>
+        <a href="/tags" title="Tags"><i class="fa fa-tags"></i><span>Tags</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">碎纸屑</h1>
+        <h3 class="cover-siteTitle">浮生若梦</h3>
+        <p class="cover-siteDesc">成长、学习</p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-telegram">
+                <a href="" target="_blank" title="telegram" ref="friend">
+                    <i class="fa fa-telegram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-instagram">
+                <a href="" target="_blank" title="instagram" ref="friend">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-twitter">
+                <a href="" target="_blank" title="twitter" ref="friend">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-github">
+                <a href="" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+        
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">Input Search key Words Here</label>
+        <input class="search-field" type="text" name="s" placeholder="Input Search key Words Here">
+        <button type="submit" class="search-form-submit" title="Search"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="" target="_blank">
+                    <img width="48" src="" alt="avatar">
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="" target="_blank"></a>
+                    <span title="最后编辑于2019-01-15">2019-01-15</span>
+                </p>
+                <p></p>
+            </div>
+            <h2 class="post-title">python函数</h2>
+            <div class="post-meta">
+                本文总共3981个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <p>过程就是没有返回值的函数<br>使用函数减少重复代码 保持一致性 易维护性<br>return<br>返回值数 = 0 返回None<br>返回值数 = 1 返回object<br>返回值数 &gt; 1 返回tuple<br>默认参数 默认给定值</p>
+<p>形参只有在被调用 才分配内存单元<br><img src="https://i.loli.net/2019/01/15/5c3deb527259d.png" alt=""><br>位置参数 必须一一对应<br>test （1,2,3)<br>关键字参数 不需要一一对应<br>test （y=2 ,x =1 , z =3)<br>位置参数一定在关键字参数左边</p>
+<p>参数组<em> 列表</em> args <strong> 字典 </strong> kwargs<br>多余元素作为元祖传入args中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def hello(x,*args):</span><br><span class="line">    print(x)</span><br><span class="line">    print(args)  # args 输出元祖（2,3,4,5）</span><br><span class="line">hello(1,2,3,4,5)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def hello(x,*args,**kwargs):</span><br><span class="line">    print(x)</span><br><span class="line">    print(args)</span><br><span class="line">    print(kwargs)</span><br><span class="line">hello(1)</span><br></pre></td></tr></table></figure>
+<h2 id="局部变量与全局变量"><a href="#局部变量与全局变量" class="headerlink" title="局部变量与全局变量"></a>局部变量与全局变量</h2><p>global 关键字<br>如果函数的内容无global关键字 有限读取局部变量只能读取全局变量 无法对全局变量重新赋值<br>如果函数中有global关键字 变量实质上是全局那个变量 可读取可赋值<br>全局变量一定要先声明<br>全局变量全部大写<br>局部变量全部小写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">NAME = &quot;产品经理&quot;</span><br><span class="line">def yangjie():</span><br><span class="line">    global NAME    声明全局变量</span><br><span class="line">    print(&quot;hello&quot;,NAME)</span><br><span class="line">    NAME = &quot;xiaosi&quot;  修改全局变量</span><br><span class="line">    print(&quot;hello&quot;,NAME)</span><br><span class="line">def cas ():</span><br><span class="line">    print(&quot;hello&quot;,NAME)</span><br><span class="line"></span><br><span class="line">yangjie()</span><br><span class="line">cas()  顺序不同影响输出</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">name = &quot;sun&quot;</span><br><span class="line">def haha():</span><br><span class="line">    name = &quot;zhi&quot;</span><br><span class="line">    def jcq():</span><br><span class="line">        global name   改变最外层的name = ‘sun’</span><br><span class="line">        name = &apos;xiao&apos;</span><br><span class="line">    jcq()</span><br><span class="line">    print (name)</span><br><span class="line">print(name)</span><br><span class="line"></span><br><span class="line">haha()</span><br><span class="line">print(name)</span><br></pre></td></tr></table></figure>
+<p>nonlocal 上一级变量</p>
+<p>函数即变量</p>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><ul>
+<li>必须有一个明确的结束条件</li>
+<li>每次进入更深一层递归时，问题规模比上次减少</li>
+<li>递归效率不高，</li>
+</ul>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>没有return 默认返回None<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def foo():</span><br><span class="line">    name = &apos;sun&apos;</span><br><span class="line">    def bar():</span><br><span class="line">        name = &apos;zhi&apos;</span><br><span class="line">        def tt():</span><br><span class="line">            print(name)</span><br><span class="line">        return tt</span><br><span class="line">    return bar</span><br><span class="line">foo()()() 相当于进门一步步进</span><br></pre></td></tr></table></figure></p>
+<p>output : zhi</p>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>lambda x:x+1  第一个x是形参 冒号后面是返回值 默认具有return<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def clac (x):</span><br><span class="line">    return x+1</span><br><span class="line">res = clac(10)</span><br><span class="line">print(res)</span><br><span class="line">c = lambda x:x+1</span><br><span class="line">print(c(10))</span><br><span class="line">f = lambda x:name + &quot;_sb&quot;</span><br><span class="line">print(f(name))</span><br><span class="line">lambda x,y,z:(x+1,y+1,z+1)   多个元素</span><br></pre></td></tr></table></figure></p>
+<p>返回元祖</p>
+<ul>
+<li>面向过程</li>
+<li>面向对象</li>
+<li>函数式编程<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2></li>
+<li>不可变 不用变量保存状态，不修改变量</li>
+<li>函数即变量<br>把函数当做参数传值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def foo(n):</span><br><span class="line">    print (n)</span><br><span class="line">def bar(name):</span><br><span class="line">    print(&quot;my name is %s&quot; %name)</span><br><span class="line">foo(bar)</span><br><span class="line">foo(bar(&quot;sun&quot;))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>返回值可以是函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def bar():</span><br><span class="line">    print(&quot;from bar&quot;)</span><br><span class="line">def foo():</span><br><span class="line">    print(&quot;from foo&quot;)</span><br><span class="line">    return bar</span><br><span class="line">n = foo()</span><br><span class="line">print(n)</span><br><span class="line">n()</span><br></pre></td></tr></table></figure></p>
+<p>高阶函数：<br>1、函数接收的参数是一个函数名<br>2、返回值中包含函数</p>
+<p>尾调用  一定是最后一步 解决递归的性能优化  递归的话空间没有释放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def get():</span><br><span class="line">    print(&quot;hello)</span><br><span class="line">    get()</span><br><span class="line">    return &quot;say&quot;  一直不运行留在内存空间</span><br></pre></td></tr></table></figure></p>
+<h2 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h2><p>第一个参数函数方法  第二个参数是可迭代对象<br>在原有数据 上加工一下<br>该列表元素个数及位置与原来一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">num_l = [1,2,34,5,5,4]</span><br><span class="line"></span><br><span class="line">res = map(lambda x:x+1,num_l) res 只是一个地址</span><br><span class="line">print(res)  #只可迭代一次</span><br><span class="line">print(list(res))</span><br><span class="line">for i in res:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure></p>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>筛选列表值 判断每个元素得到bool值 得出一个列表<br>只保留返回值是true的 返回一个可迭代对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">move_people = [&apos;刚娘&apos;,&apos;wupeiqi&apos;,&apos;sb_p&apos;,&apos;sb_n&apos;,&apos;p_sb&apos;,&apos;l_sb&apos;]</span><br><span class="line">res = filter(lambda x:not x.endswith(&apos;sb&apos;),move_people)  #只保留bool值为TRue的</span><br><span class="line">print(list(res))</span><br></pre></td></tr></table></figure></p>
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p>将数据合并一处 压缩  合并一个序列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from functools import reduce</span><br><span class="line">num_l = [1,2,3,100]</span><br><span class="line">print(reduce(lambda x,y:x+y,num_l))</span><br><span class="line">print(reduce(lambda x,y:x+y,num_l,1))</span><br><span class="line">注意最后一个参数是初始值</span><br></pre></td></tr></table></figure></p>
+<h1 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h1><p>all（‘1’） = True<br>all(“”,”1”) = False<br>any 与 all相反<br>eval<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dic = &#123;&apos;name&apos;:&apos;xiaoming&apos;&#125;</span><br><span class="line">str_dic = str(dic)</span><br><span class="line">d = eval(str_dic)</span><br></pre></td></tr></table></figure></p>
+<p>eval 可以把字符串的值进行运算</p>
+<p>可hash的数据类型即不可变数据类型<br>只要变量不变hash一定不变</p>
+<p>bin 十进制改二进制<br>isinstance 判断<br>print(<strong>file</strong>)<br>输出当前目录<br>print(<strong>file</strong>)</p>
+<p>zip() 拉链传入两个序列 得到一一对应的关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(zip((&apos;a&apos;,&apos;b&apos;,&apos;c&apos;),(1,2,3)))</span><br><span class="line">[(&apos;a&apos;, 1), (&apos;b&apos;, 2), (&apos;c&apos;, 3)] #一一对应</span><br></pre></td></tr></table></figure></p>
+<p>max 一位一位比<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">age_dic = &#123;&apos;age1&apos;:18,&apos;age2&apos;:20,&apos;age3&apos;:12,&apos;age4&apos;:5,&apos;age1222222&apos;:6&#125;</span><br><span class="line">print(max(age_dic.values()))</span><br><span class="line">print(max(age_dic))</span><br></pre></td></tr></table></figure></p>
+<p>只要可迭代都可以用max函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">l = [(5,&apos;e&apos;),(1,&apos;b&apos;),(3,&apos;a&apos;),(7,&apos;d&apos;)]</span><br><span class="line">print(list(max(l)))</span><br></pre></td></tr></table></figure></p>
+<p>元素与元素的比较 从第一位开始比 比出大小 就不比了<br> 一位一位比较  不同类型间不能比较  第一位比较出大小后面不用再比了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">people = [</span><br><span class="line">    &#123;&apos;name&apos;:&apos;alex&apos;,&apos;age&apos;:100&#125;,</span><br><span class="line">    &#123;&apos;name&apos;:&apos;ax&apos;,&apos;age&apos;:1004&#125;,</span><br><span class="line">    &#123;&apos;name&apos;:&apos;skkx&apos;,&apos;age&apos;:1030&#125;</span><br><span class="line">]</span><br><span class="line">print(sorted(people,key=lambda x:x[&apos;age&apos;]))</span><br><span class="line">print(max(people,key=lambda x:x[&apos;age&apos;]))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pow(3,3,2)  3的三次方取余</span><br></pre></td></tr></table></figure>
+<p>round 四舍五入<br>排序  本质就是比较大小 只有同类型才能比较<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l = [2,3,4,2,1,34]</span><br><span class="line">ll = sorted(l)</span><br></pre></td></tr></table></figure></p>
+<p>对年龄排序排序获取姓名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">name_dic = &#123;</span><br><span class="line">    &quot;wu&quot;:21,</span><br><span class="line">    &quot;sun&quot;:23,</span><br><span class="line">    &quot;jia&quot;:56          </span><br><span class="line">&#125;</span><br><span class="line">print(sorted(name_dic,key=lambda key:name_dic[key]))</span><br><span class="line">print(sorted(zip(name_dic.values(),name_dic.keys())))</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">Tags：
+            
+            <a href="/tags/python全栈/">python全栈</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+</div>
+<script src="/js/busuanzi.pure.mini.js"></script>
+
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about" title="About">About</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="help">急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/app" title="App下载">App下载</a>
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br>
+            ©2018 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">碎纸屑</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+
+    </div>
+</footer>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>
